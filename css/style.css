@@ -184,8 +184,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* process */
 .vsteps{margin-top:20px}
 .vstep{display:grid;grid-template-columns:200px minmax(0,1fr) 260px;gap:30px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line)}
-.num{font-size:110px;font-weight:700;letter-spacing:0;line-height:.8;color:#2E2E5E;transition:color .35s,text-shadow .35s}
-.vstep:hover .num{color:var(--accent);text-shadow:0 0 28px rgba(255,143,171,.55),0 0 60px rgba(255,143,171,.25)}
+.num{font-size:110px;font-weight:700;letter-spacing:.02em;line-height:.8;color:var(--bg);-webkit-text-stroke:3px var(--mute);paint-order:stroke fill;transition:color .3s,-webkit-text-stroke-color .3s}
+.vstep:hover .num{color:var(--accent);-webkit-text-stroke-color:var(--accent)}
 .vstep:hover h3{color:var(--accent);transition:color .35s}
 .vstep h3{font-size:34px;font-weight:600;letter-spacing:-.02em}
 .vstep p{color:var(--mute);margin-top:6px}
