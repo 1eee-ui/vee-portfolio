@@ -84,3 +84,18 @@
 
   var yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
 })();
+
+// on phones there is no hover: the step in the middle of the screen turns pink
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.vstep'));
+  if (!steps.length || matchMedia('(hover: hover)').matches) return;
+  function pick() {
+    var mid = innerHeight / 2, best = null, dist = Infinity;
+    steps.forEach(function (s) {
+      var r = s.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mid);
+      if (r.bottom > 0 && r.top < innerHeight && d < dist) { dist = d; best = s; }
+    });
+    steps.forEach(function (s) { s.classList.toggle('on', s === best); });
+  }
+  addEventListener('scroll', pick, { passive: true }); pick();
+})();
