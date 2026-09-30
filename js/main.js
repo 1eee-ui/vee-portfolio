@@ -39,7 +39,7 @@
     items.forEach(function (el) { io.observe(el); });
   } else items.forEach(function (el) { el.classList.add('in'); });
 
-  // "90+" counts up when it comes into view
+  // the Lighthouse number counts up when it comes into view
   var stat = $('[data-count]');
   if (stat && !reduce && 'IntersectionObserver' in window) {
     var to = +stat.dataset.count, done = false;
@@ -49,7 +49,7 @@
       requestAnimationFrame(function step(t) {
         if (!t0) t0 = t;
         var p = Math.min((t - t0) / 1300, 1);
-        stat.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + (p === 1 ? '+' : '');
+        stat.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
         if (p < 1) requestAnimationFrame(step);
       });
     }, { threshold: 0.6 }).observe(stat);
