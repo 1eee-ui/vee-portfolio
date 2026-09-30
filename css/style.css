@@ -296,3 +296,6 @@ section[id],main[id]{scroll-margin-top:90px}
   .foot{grid-template-columns:1fr;justify-items:center;text-align:center}
   .foot .fr{justify-self:center;text-align:center}
 }
+
+.foot .credit{grid-column:1/-1;text-align:center;font-size:13px;opacity:.75;margin:0}
+.foot .credit a{text-decoration:underline;text-underline-offset:3px}
