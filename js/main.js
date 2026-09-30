@@ -113,3 +113,15 @@
     }, function () { location.href = m.href; });
   });
 })();
+
+// in-page links scroll by script, so they also work where the browser blocks "#" navigation (previews, embeds)
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var el = document.getElementById(a.getAttribute('href').slice(1));
+  if (!el) return;
+  e.preventDefault();
+  var smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+  try { history.replaceState(null, '', a.getAttribute('href')); } catch (err) {}
+});
