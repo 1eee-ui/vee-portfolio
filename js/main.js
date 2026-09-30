@@ -99,3 +99,17 @@
   }
   addEventListener('scroll', pick, { passive: true }); pick();
 })();
+
+// the e-mail address under the buttons is copied on click (works without a mail app)
+(function () {
+  var m = document.querySelector('[data-copy]');
+  if (!m || !navigator.clipboard) return;
+  m.addEventListener('click', function (e) {
+    e.preventDefault();
+    var text = m.dataset.copy;
+    navigator.clipboard.writeText(text).then(function () {
+      m.textContent = 'Copied \u2713';
+      setTimeout(function () { m.textContent = text; }, 1600);
+    }, function () { location.href = m.href; });
+  });
+})();
